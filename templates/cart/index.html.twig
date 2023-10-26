@@ -1,0 +1,126 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon panier - Gruut{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{{asset('assets/css/product/panier.css')}}">
+{% endblock %}
+{% block js %}
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+    <script src="{{asset('assets/js/ajax/quantity.js')}}"></script>
+{% endblock %}
+
+{% block content %}
+
+
+    <h1 class="text center">Mon panier</h1>
+    Voici les articles que vous avez ajouté à votre panier.
+    <hr>
+    {% if cart|length > 0 %}
+        
+    <table class="table table-responsive mb-5 table-striped d-none d-lg-table">
+        <thead>
+            <tr>
+                <th scope="col-12">Produit</th>
+                <th score="col"></th>
+                <th scope="col">Quantité</th>
+                <th scope="col">Prix</th>
+                <th scope="col">Total</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% set total = null %}
+        {% for product in cart %}
+            <tr>
+            
+                <th>
+                    <img src="assets/img/uploads/{{ product.product.illustration}}" alt="{{product.product.name}}" height="75px"> <br>    
+                </th>
+                <td> 
+                    {{product.product.name}} <br>
+                     <small>{{product.product.subtitle}}</small>
+                </td>
+                <td>
+                    <a class="js-decrease" href="{{path('app_decrease_to_cart', {'id' : product.product.id})}}"> <img src="{{asset('assets/img/minus.png')}}" height="12px" alt="réduire"> </a>
+                     <span class="js-quantity">X{{product.quantity}}</span>
+                    <a class="js-add" href="{{path('app_add_to_cart', {'id' : product.product.id})}}"> <img src="{{asset('assets/img/plus.png')}}" height="12px" alt="ajouter"> </a>
+                </td>              
+                <td>
+                    {{(product.product.price / 100)|number_format(2, ',', '.')}}€
+                </td>  
+                <td>
+                    {{(product.product.price * product.quantity / 100)|number_format(2, ',', '.')}}€
+                </td>  
+                <td>
+                    <a href="{{path('app_delete_to_cart', {'id' : product.product.id})}}">
+                        <img src="{{asset('assets/img/delete.png')}}" height="18px" alt="supprimer le produit">
+                    </a>
+                </td>
+            </tr>
+            {% set total = total + (product.product.price * product.quantity) %}            
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+
+
+
+    <!-- PRODUCTS START LIL -->
+<div class="container-fluid product-container row mx-0 p-0 mb-5 mt-5 d-lg-none">
+	<div class="col-0 col-sm-0 col-md-1 col-xl-1"></div> 
+	<div class="col-12 col-sm-12 col-md-10 col-xl-10 row m-0">
+			<!-- FOR PRODUCT IN PRODUCTS START -->
+		     {% for product in cart %}
+              
+			<div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+				<div class="card rounded-0">
+					<img class="card-img-top" src="assets/img/uploads/{{product.product.illustration}}" alt="Card image cap">
+					<div class="card-body">
+						<h3 class="card-title text-center">{{product.product.name}}</h3>
+                        
+						<p class="card-text text-center">{{ (product.product.price / 100)|number_format(2, ',', '.') }}€</p>
+					</div>
+                    <div class="d-flex justify-content-evenly mb-3">
+                        <div>
+                            <a class="js-decrease" href="{{path('app_decrease_to_cart', {'id' : product.product.id})}}"> <img src="{{asset('assets/img/minus.png')}}" height="12px" alt="réduire"> </a>
+                               <span class="js-quantity">X{{product.quantity}}</span> 
+                            <a class="js-add" href="{{path('app_add_to_cart', {'id' : product.product.id})}}"> <img src="{{asset('assets/img/plus.png')}}" height="12px" alt="ajouter"> </a>
+                        </div>
+                        <div>
+                             <a href="{{path('app_delete_to_cart', {'id' : product.product.id})}}">
+                                <img src="{{asset('assets/img/delete.png')}}" height="18px" alt="supprimer le produit">
+                            </a>
+                        </div>
+                    </div>
+                    
+				</div>
+			</div>	
+            {% endfor %}
+	</div>
+	<div class="col-12 col-sm-12 col-md-1 col-xl-1"></div>
+</div>
+<!-- PRODUCT END LIL -->
+
+
+
+
+
+    <div class="text-center">
+        <b>Nombre de produit :</b> {{cart|length}} <br>
+        <b>Total de mon panier</b> {{(total / 100)|number_format(2,',','.')}} €<br>
+        <a href="{{ path('app_order') }}" class="btn btn-grutt-accept w-50 m-3">Valider mon panier</a>
+        <a href="{{ path('app_remove_my_cart') }}" class="btn btn-grutt-delete w-50 m-3">Vider mon panier</a>
+ 
+    </div>
+    {% else %}
+    
+    <p class="text-center">Votre panier est actuellement vide</p>
+ {% endif %}
+
+
+
+
+
+{% endblock %}
+

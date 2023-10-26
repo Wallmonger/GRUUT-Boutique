@@ -1,0 +1,66 @@
+a {
+    text-decoration: none;
+}
+
+.card {
+    border: none;
+  }
+  
+  .card:hover {
+    scale: 1.1 !important;
+    transition : 0.2s;
+  }
+  
+  
+  
+  .card-img-top {
+    border-radius: 0px;
+    
+  }
+  
+  .card-body {
+    background-color: rgba(255, 255, 255, 0);
+  }
+  
+  /* .card-img-top {
+      width: 100%;
+      height: 15vw;
+      object-fit: cover;
+  } */
+  
+  .card-body {
+    height: 25% !important;
+  }
+  
+  .card-title {
+    font-family: 'La Belle Aurore', cursive !important;
+    font-size: 2rem !important;
+    text-transform: lowercase;
+    font-weight: 400;
+  }
+  
+  
+  .card-text {
+    
+    font-family: 'Krub', sans-serif !important;
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  .btn-grutt-accept {
+    background-color: #DE9E48;
+  }
+
+  .btn-grutt-accept:hover {
+    background-color: #ffa837;
+  }
+
+  .btn-grutt-delete {
+    background-color: #563727;
+    color: white;
+  }
+
+  .btn-grutt-delete:hover {
+    background-color: #990a00;
+    color: white;
+  }

@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Confirmation de commande - Grutt{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{{asset('assets/css/order/orderpoststripe.css')}}">
+{% endblock %}
+
+{% block content %}
+
+	<div class="container-fluid mt-5">
+		<div class="row">
+	<div class="col-0 col-md-2"></div>
+	<div class="col-12 col-md-8 text-center">
+		 <h2 class="text-center">Confirmation de commande</h2> <br> <br>
+		<p class="text-center">
+        Bonjour <strong> {{order.user.firstname}} {{order.user.lastname}} </strong>,           <br><br>
+		nous vous remercions pour votre commande n° <strong class="text-grutt">{{order.reference}}</strong>.    <br>
+		Une confirmation vient de vous être envoyée par email à l'adresse <strong class="text-primary">{{order.user.email}}</strong>
+		<hr>
+		Votre commande sera livrée par <strong class="text-grutt">{{order.carrierName}}</strong>
+		à l'adresse suivante :  <br>
+		{{order.delivery|raw}}
+        <hr>
+        Pour suivre votre commande, rendez-vous dans votre compte, dans la catégorie "commandes"
+    	</p> <br>
+		<a href="{{path('app_account')}}" class="btn btn-grutt">Aller à mon compte</a>
+		</div>
+	<div class="col-0 col-md-2"></div>
+		
+		</div>
+	</div>
+
+{% endblock %}

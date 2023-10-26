@@ -1,0 +1,31 @@
+.col-form-label {
+    font-size: 1.5rem;
+    text-decoration: underline;
+}
+
+
+.btn-grutt {
+    background-color: #DE9E48;
+}
+
+form {
+    background-color : #372C2E;
+    color: white;
+    padding: 50px;
+    line-height: 25px;
+}
+
+.form-check-label::first-line {
+    font-size: 1.2rem;
+    color: #DE9E48;
+}
+
+@media screen and (max-width : 393px) {
+    .form-check-label {
+        font-size: 0.7rem;
+    }
+
+    .form-check-label::first-line {
+        font-size: 1rem;
+    }
+}

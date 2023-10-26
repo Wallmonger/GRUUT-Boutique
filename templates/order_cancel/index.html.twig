@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Erreur de paiement - Gruut
+{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{{asset('assets/css/order/orderpoststripe.css')}}">
+{% endblock %}
+{% block content %}
+
+	<div class="container-fluid mt-5">
+		<div class="row">
+			<div class="col-0 col-md-2"></div>
+			<div class="col-12 col-md-8 text-center">
+				<h2 class="text-center">Une erreur est survenue lors du paiement</h2> <br> <br>
+				<p class="text-center">
+        		Bonjour <strong> {{order.user.firstname}} {{order.user.lastname}} </strong>,           <br><br>
+				Il semblerait que votre paiement ait échoué pour votre commande n° <strong class="text-grutt">{{order.reference}}</strong>.    <br>
+				
+				<hr>
+				
+        		Pour réessayer le paiement, veuillez cliquer sur le lien ci-dessous
+    			</p> <br>
+				<a href="{{path('app_order')}}" class="btn btn-grutt">Réessayer</a>
+				</div>
+			<div class="col-0 col-md-2"></div>
+		
+		</div>
+	</div>
+{% endblock %}

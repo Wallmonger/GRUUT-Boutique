@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+{% block css %}
+    <link rel="stylesheet" href="{{asset('assets/css/utilisateur/inscription.css')}}">
+{% endblock %}
+{% block content %}
+   
+   {% if notification%}
+		<div class="alert alert-info position-absolute top-0"> {{ notification}}</div>
+		<hr>
+   {% endif %}
+    
+
+    <div class="container-fluid position-relative bg-black total-container">
+		
+		<div class="inscription w-75 h-75 position-absolute p-5 d-flex justify-content-center align-items-center">
+            {{ form(form) }}
+			
+		</div>
+		<div class="row h-100">
+			<div class="col-12 block-up h-50"> 
+        	</div>
+			<div class="col-12 block-down h-50"></div>
+		</div>
+	</div>
+	
+	<div class="inner-inscription d-block">
+		<h1 class="text-center pt-5 text-white">Inscription</h1>
+		<p class="text-center text-white">Si vous avez déjà un compte, connectez-vous <a href="{{path('app_login')}}">ici</a>
+	</div>
+
+
+    
+{% endblock %}
+

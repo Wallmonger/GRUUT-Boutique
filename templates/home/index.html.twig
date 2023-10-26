@@ -1,0 +1,158 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil - Gruut{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{asset('assets/css/accueil/carousel.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/accueil/app.css')}}">
+{% endblock %}
+
+{% block js %}
+   <script src="{{asset('assets/js/accueil/mainpage.js')}}" defer></script>
+
+
+   
+{% endblock %}
+
+{% block content %}
+	
+	<!-- CAROUSEL START -->
+			<div class="carousel-container mt-3 mx-4 z-0">
+				<div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+					<div class="carousel-indicators">
+					{% for key, header in headers %}
+					  <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="{{ key }}" class="{% if key == 0 %}active{% endif %} z-0" aria-current="true" aria-label="Slide 1"></button>
+					{% endfor %}
+					</div>
+					<div class="carousel-inner">
+						{% for key,  header in headers %}
+
+					  <div class="carousel-item {% if key == 0 %}active{% endif %}" style="background: url('assets/img/uploads/{{header.illustration}}'); background-size : cover">
+						<div class="container">
+						  <div class="carousel-caption text-start z-0">
+							<h1>{{header.title}}</h1>
+							<p>{{header.content}}</p>
+							<p><a class="btn btn-lg btn-warning" href="{{header.btnUrl}}">{{header.btnTitle}}</a></p>
+						  </div>
+						</div>
+					  </div>
+					  {% endfor %}
+					</div>
+					<button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+					  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					  <span class="visually-hidden">Previous</span>
+					</button>
+					<button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+					  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+					  <span class="visually-hidden">Next</span>
+					</button>
+	  			</div>
+			</div>
+	
+			
+	<!-- CAROUSEL END -->
+	<!-- THREE CATEGORY START -->
+
+	<div class="container-fluid px-4 mt-5 text-center three-category-container">
+		
+		<div class="row gx-4 h-100">
+		  <div class="col col-lg-4 col-md-6 col-sm-4 mb-3">
+		    <a href="{{path('app_product_chambres')}}" class="text-decoration-none">
+				<div class="p-3 bg-dark h-100 d-flex justify-content-center align-items-center three-category-item" style="background: url({{asset('assets/img/temporary/chambre.jpg')}}); background-size: cover;">
+					<p class="underline-hover">CHAMBRE</p> <br> 
+				</div>
+			</a>
+		  </div>
+		  <div class="col col-lg-4 col-md-6 mb-3">
+			<a href="{{path('app_product_best')}}" class="text-decoration-none">
+				<div class="p-3 bg-dark h-100  d-flex justify-content-center align-items-center three-category-item" style="background: url({{asset('assets/img/temporary/cuisine.jpg')}}); background-size: cover;">
+					<p class="underline-hover">LES MIEUX NOTÉS</p>
+				</div>
+			</a>
+		  </div>
+		  <div class="col col-lg-4 col-md-12 mb-3">
+			<a href="{{path('app_product_salon')}}" class="text-decoration-none">
+				<div class="p-3 bg-dark h-100  d-flex justify-content-center align-items-center three-category-item" style="background: url({{asset('assets/img/temporary/livingroom.jpg')}}); background-size: cover;">
+					<p class="underline-hover">SALON</p>
+				</div>
+			</a>
+		  </div>
+		</div>
+	  </div>
+			
+	<!-- THREE CATEGORY END -->
+
+	<!--PRODUITS EN VRAC START -->
+	 <div class="reveal-1 best-sell-title mx-0 my-5 w-100">
+	 		<p class="reveal-2 decouvrez text-center m-0">Découvrez</p>
+	 		 <h1 class="reveal-3 text-center">Nos articles en vedette</h1>
+	  		<p class="reveal-4 decouvrez-little text-center">Découvrez ici nos meilleurs produits, sur les derniers mois</p>
+	</div>
+	  <div class="container-fluid" style="overflowX : hidden">
+			<div class="mt-1 row">
+				{% for product in products %}
+				{% include 'product/singlebest.html.twig' %}
+				{% endfor %}
+			</div>
+	  </div>
+	  
+
+
+	 {# Employés start ==============================  #}
+
+	<div class="reveal-1 best-sell-title mx-0 my-5 w-100 mb-5">
+	 		<p class="reveal-2 decouvrez text-center m-0">Les personnes derrière gruut</p>
+	 		 <h1 class="reveal-3 text-center">Notre équipe</h1>
+	</div>
+
+
+
+	<div class="container-fluid">
+	 	<div class="row">	
+			<div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4 mx-0 reveal">
+				<div class="card rounded-0 border-0">
+					<a href="#" alt="employe"><img class="employee card-img-top rounded-circle" src="{{asset('assets/img/temporary/employe1.png')}}" alt="Card image cap"></a>
+					<div class="card-body">
+						<h3 class="card-title text-center">Pierre</h3>
+						<p class="card-text text-center">Créateur de Gruut</p>
+					</div>
+				</div>
+            </div>
+
+			<div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4 mx-0">
+				<div class="card rounded-0 border-0">
+					<a href="#" alt="employe"><img class="employee card-img-top rounded-circle" src="{{asset('assets/img/temporary/employe2.png')}}" alt="Card image cap"></a>
+					<div class="card-body">
+						<h3 class="card-title text-center">Jean-robert</h3>
+						<p class="card-text text-center">Menuisier</p>
+					</div>
+				</div>
+            </div>
+
+			<div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4 mx-0">
+				<div class="card rounded-0 border-0">
+					<a href="#" alt="employe"><img class="employee card-img-top rounded-circle" src="{{asset('assets/img/temporary/employe3.jpg')}}" alt="Card image cap"></a>
+					<div class="card-body">
+						<h3 class="card-title text-center">Colette</h3>
+						<p class="card-text text-center">Secrétaire</p>
+					</div>
+				</div>
+            </div>
+
+			<div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4 mx-0">
+				<div class="card rounded-0 border-0">
+					<a href="#" alt="employe"><img class="employee card-img-top rounded-circle" src="{{asset('assets/img/temporary/employe3.jpg')}}" alt="Card image cap"></a>
+					<div class="card-body">
+						<h3 class="card-title text-center">Sylvie</h3>
+						<p class="card-text text-center">Stagiaire</p>
+					</div>
+				</div>
+            </div>
+		</div>
+	 </div>
+	{# Employés end  #}
+
+	
+
+
+{% endblock %}

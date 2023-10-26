@@ -1,0 +1,277 @@
+@import url('https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@400;500;700&display=swap');
+  /* [
+    font-family: 'Kaisei Decol', serif;
+  ] */
+
+
+
+hr {
+  width: 0%; transition: 1s;
+}
+
+.hr-revealed {
+  width: 100%;
+}
+
+  /* FILTERS ================================================= */
+
+  
+
+  form {
+    padding: 0 !important;
+  }
+
+  legend {
+    display: none !important;
+  }
+
+
+  .form-check-input {
+    display: none !important;
+  }
+
+  .form-check {
+    padding: 0px !important;
+  }
+
+
+  div#color {
+    display: flex;
+    justify-content: space-around;
+    padding: 0 !important;
+  }
+
+  div#style {
+    display: flex;
+    justify-content: space-around;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+
+  /* div du submit */
+  .mb-3 {
+    display: flex !important;
+    justify-content: center !important;
+  }
+
+  /* COULEURS */
+
+
+
+
+
+  input[name="color[]"]:checked+label {
+       border: 3px solid white;
+  }
+
+  label[for="color_0"] {
+    color: #4d373300;
+    background: #411f10;
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    
+ }
+
+ label[for="color_1"] {
+  color: rgba(255, 255, 255, 0);
+  background: #5C4033;
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+}
+
+label[for="color_2"] {
+  color: rgba(255, 255, 255, 0);
+  background: #CB6709;
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+}
+
+label[for="color_3"] {
+  color: rgba(255, 255, 255, 0);
+  background: #EB923E;
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+}
+
+label[for="color_4"] {
+  color: rgba(255, 255, 255, 0);
+  background: #7A7A7A;
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+}
+
+label[for="color_0"]:hover, label[for="color_1"]:hover, label[for="color_2"]:hover, label[for="color_3"]:hover, label[for="color_4"]:hover {
+    cursor: pointer;
+    border: 2px solid black;
+}
+
+label[for="style_placeholder"] {
+  display: none;
+}
+
+/* BUTTON STYLE */
+
+
+input[name="style"]:checked+label {
+     background-color: #7A431D;
+     color: white;
+}
+
+
+
+
+@media screen and (max-width : 400px) {
+  label[for="style_0"], label[for="style_1"], label[for="style_2"] {
+    margin: 0 !important;
+    font-size: 0.7rem;
+  }
+}
+
+label[for="style_0"] {
+  border: 2px solid black;
+  margin: 3px;
+  padding: 5px;
+  font-family: 'Krona One', sans-serif;
+}
+
+
+label[for="style_1"] {
+  border: 2px solid black;
+  margin: 3px;
+  padding: 5px;
+  font-family: 'Krona One', sans-serif;
+}
+
+label[for="style_2"] {
+  border: 2px solid black;
+  margin: 3px;
+  padding: 5px;
+  font-family: 'Krona One', sans-serif;
+}
+
+
+.over-panier {
+  background-color: #372C2E;
+  opacity: 0.5;
+}
+
+.over-panier:hover {
+  opacity: 1;
+  background-color: #DE9E48;
+}
+
+
+.top-title {
+  font-family: 'La Belle Aurore', cursive;
+  font-size: 5rem;
+  font-weight: 500;
+  text-shadow: 3px 3px 0px #dddddd;
+}
+
+
+@media screen and (max-width : 749px) {
+  .top-title {
+    font-size: 3rem;
+  }
+}
+
+@media screen and (max-width : 400px) {
+  .top-title {
+    font-size: 2rem;
+  }
+}
+
+
+.filter-menu-title {
+  font-family: 'Krub', sans-serif;
+  font-size: 2rem;
+}
+
+.accordion-button {
+    background-color: white;
+    border: 1px solid #7A431D;   
+}
+
+.accordion-button:focus {
+  box-shadow: 1px 1px #303030, -1px -1px #303030, 1px -1px #303030, -1px 1px #303030;
+  border-color: #1f1f1f;
+}
+
+.card {
+  border: none;
+}
+
+.card:hover {
+  scale: 1.1 !important;
+  transition : 0.2s;
+}
+
+
+
+.card-img-top {
+  border-radius: 0px;
+  
+}
+
+.card-body {
+  background-color: rgba(255, 255, 255, 0);
+}
+
+/* .card-img-top {
+    width: 100%;
+    height: 15vw;
+    object-fit: cover;
+} */
+
+.card-body {
+  height: 25% !important;
+}
+
+.card-title {
+  font-family: 'La Belle Aurore', cursive !important;
+  font-size: 2rem !important;
+  text-transform: lowercase;
+  font-weight: 400;
+}
+
+
+.card-text {
+  
+  font-family: 'Krub', sans-serif !important;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+@media screen and (max-width : 1477px) {
+   .product-menu-title {
+    font-size: 1.5rem;
+   }
+
+   label[for="color_0"], label[for="color_1"], label[for="color_2"], label[for="color_3"], label[for="color_4"] {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+   }
+}
+
+@media screen and (max-width : 1083px) {
+  label[for="color_0"], label[for="color_1"], label[for="color_2"], label[for="color_3"], label[for="color_4"] {
+    width: 30px;
+    height: 30px;
+    border-radius: 0px;
+    
+  }
+
+  .card-title {
+    
+    font-size: 1.5rem !important;
+    
+  }
+  
+}

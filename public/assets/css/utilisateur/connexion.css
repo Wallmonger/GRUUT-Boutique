@@ -1,0 +1,143 @@
+
+
+@import url('https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@400;500;700&display=swap');
+/* [
+  font-family: 'Kaisei Decol', serif;
+] */
+
+
+
+form {
+    z-index: 0;
+}
+
+label[for="active"] {
+    display: block !important;
+}
+
+@media screen and (min-width : 992px) {
+    label[for="active"] {
+      display: none !important;
+  }
+}
+
+
+h1 {
+font-family: 'Krona One', sans-serif;
+}
+
+.yourmail {
+    background-color: #372C2E !important;
+    border: 0px !important;
+    color: white !important;
+}
+
+.yourmail::placeholder {
+    color: white !important;
+}
+
+.yourpassword {
+    background-color: #DE9E48 !important;
+    border: 0px !important;
+    color: white !important;
+}
+
+.yourpassword::placeholder {
+    color: white;
+}
+
+.submitbutton {
+    background-color: rgb(255, 255, 255) !important;
+    color: black;
+    box-shadow: none !important;
+    border: none !important;
+}
+
+.submitbutton:hover {
+    color: black !important;
+    border: 0px;
+    box-shadow: 0px 1px 2px white, 0px -1px 2px white;
+}
+
+label {
+display: none;
+}
+
+.inscription {
+top: 14%;
+left: 12%;
+background-color: rgba(255, 166, 0, 0);
+}
+
+.inner-connexion {
+    position: absolute;
+    top: 75px;
+    left: 25px;
+    right: 25px;
+    overflow-x: hidden !important;
+    
+}
+
+.block-up {
+background-color: #DE9E48;
+}
+
+.block-down {
+background-color: #372C2E;
+}
+
+
+
+.footer-custom {
+display: none !important;
+}
+
+.form-control {
+width: 500px;
+height: 50px;
+margin-top: 50px;
+border-radius: 10px;
+text-align: center;
+
+}
+
+#register_submit {
+width: 500px;
+height: 50px;
+margin-top: 30px;
+}
+
+
+@media screen and (max-width : 587px) {
+    .form-control {
+        width: 400px;
+        height: 75px;
+    }
+
+    .submitbutton {
+        width: 100% !important;
+    }
+}
+
+
+@media screen and (max-width : 446px) {
+    .form-control {
+        width: 300px;
+        height: 75px;
+    }
+
+    .submitbutton {
+        width: 100% !important;
+    }
+}
+
+@media screen and (max-width : 350px) {
+    .form-control {
+        width: 200px;
+        height: 80px;
+    }
+
+    .submitbutton {
+        width: 100% !important;
+    }
+}

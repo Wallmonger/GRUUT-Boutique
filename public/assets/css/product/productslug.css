@@ -1,0 +1,431 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@400;500;700&display=swap');
+/* [
+  font-family: 'Kaisei Decol', serif;
+] */
+
+
+body {
+  overflow-x: hidden;
+}
+
+.liste-responsive {
+  transform: translateY(-300px);
+}
+
+.card {
+  border: none;
+}
+
+.card-title {
+  font-family: 'La Belle Aurore', cursive !important;
+  font-size: 1.5rem !important;
+  text-transform: lowercase;
+  font-weight: 400;
+}
+
+.product-img-container {
+
+    width: 650px;
+    height: 650px;
+    background-position:center center !important;
+    background-repeat:no-repeat !important;
+    background-clip:content-box !important;
+    background-size: contain !important;
+    transition: 1s;
+    animation: product 1s ease forwards;
+}
+
+@keyframes product {
+  from {
+    opacity: 0;
+  } to {
+    opacity: 1;
+  }
+}
+
+button {
+  font-family: 'Krub', sans-serif; 
+}
+
+.product-title {
+  font-family: 'Krona One', sans-serif;
+  color: #563727;
+}
+
+.product-subtitle {
+  font-family: 'La Belle Aurore', cursive;
+  color: #7A431D;
+}
+
+
+
+@media screen and (max-width : 634px) {
+  .product-img-container {
+
+    width: 500px;
+    height: 500px;
+    background: url(square.jpg) no-repeat center;
+    background-size: cover;
+  }
+}
+
+@media screen and (max-width : 440px) {
+  .product-img-container {
+
+    width: 300px;
+    height: 300px;
+    background: url(square.jpg) no-repeat center;
+    background-size: cover;
+  }
+}
+
+
+.overflow-best-products {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+@media screen and (max-width : 992px) {
+.product-description, .product-title, .product-subtitle, .product-price {
+  text-align: center !important; 
+}
+
+.product-button {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+}
+
+
+.commentaires {  
+  padding: 20px;
+  z-index: 5000;
+  box-shadow: 2px 2px 5px black;
+  background-color: #ffffff;
+  position: relative;
+
+  
+}
+
+.commentaires::before, .commentaires::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: -2px;
+  top: -5px;
+  z-index: -1;
+  transform: rotate(-2deg);
+}
+.commentaires::after {
+  left: 0;
+  transform: rotate(-1deg);
+}
+.commentaires, .commentaires::before, .commentaires::after {
+  background: #fff;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
+}
+
+
+.list-comments {
+  font-family: 'La Belle Aurore', cursive;
+  text-decoration: underline;
+}
+
+.btn-avis {
+  font-family: 'La Belle Aurore', cursive;
+  width: fit-content;
+  font-size: 1.5rem;
+  padding: 15px;
+  background-color: #372C2E;
+  color: white;
+  border-bottom: 2px solid #372C2E !important;
+}
+
+
+.btn-avis-toggled {
+  background-color: white;
+  border: 1px solid black;
+  color: #372C2E;
+}
+
+.btn-avis:hover {
+  filter: hue-rotate(90deg);
+  transition: 1s;
+  border: 1px solid rgba(0, 0, 0, 0.404);
+}
+
+.reply-button {
+  text-decoration: none;
+  color: #372C2E;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+
+.epee {
+  color: #372C2E;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+
+small {
+  color: rgba(0, 0, 0, 0.438);
+}
+
+.comment {
+  font-size: 0.9rem;
+  color: #372C2E;
+}
+
+.comment::before {
+  content : "\22";
+  color: rgb(80, 64, 64)(0, 0, 0);
+}
+
+.comment::after {
+  content : "\22";
+  color: rgb(121, 92, 92);
+}
+
+.comment-reply {
+  color: #DE9E48;
+}
+
+.user-comment {
+  font-size: 0.8rem;
+}
+
+.user-comment::before {
+  font-family: "Font Awesome 5 Free"; font-weight: 900; content: "\f007";
+  margin-right : 10px
+}
+
+
+.admin-comment {
+    color:  rgb(105, 56, 0);
+    font-size: 1rem;
+    text-transform: uppercase;
+}
+
+/* USERSTARS */ 
+
+
+.userstar0 {
+  color : #563727 !important;
+  text-shadow: 1px 1px 1px black
+}
+
+.userstar1 {
+  color : #814b29 !important;
+  text-shadow: 1px 1px 1px black
+}
+
+.userstar2 {
+  color : #ab6026 !important;
+  text-shadow: 1px 1px 1px black
+}
+
+.userstar3 {
+  color : #d97a1d !important;
+  text-shadow: 1px 1px 1px black
+}
+
+.userstar4 {
+  color : #ff9200 !important;
+  text-shadow: 1px 1px 1px black
+}
+
+.userstar5 {
+  color: #ffda00 !important;
+  text-shadow: 1px 1px 1px black
+}
+
+.replythis {
+  border-left: 1px solid rgb(80, 80, 80);
+  padding-left: 30px;
+}
+
+.btn-grutt {
+  font-family: 'La Belle Aurore', cursive;
+  font-size: 2rem;
+  color: black;
+}
+
+
+.btn-grutt:hover {
+  background-color : #DE9E48;
+  color: white;
+  transition: 1s;
+  border-radius: 0 0 0 0 !important;
+  text-decoration: underline !important;
+}
+
+
+.btn-grutt::after {
+  font-family: "Font Awesome 5 Free"; font-weight: 900; content: " \f1d8" 
+}
+
+.close-review {
+  font-family: 'La Belle Aurore', cursive;
+  font-size: 2rem;
+  color: black;
+}
+
+.close-review:hover {
+  background-color : #940000;
+  color: white;
+  transition: 1s;
+  border-radius: 0 0 0 0 !important;
+  text-decoration: underline !important;
+}
+
+#comments_rating, legend, label[for="comments_content"] {
+  display: none;
+}
+
+textarea {
+  background-image: -webkit-linear-gradient(left, white 10px, transparent 10px), -webkit-linear-gradient(right, white 10px, transparent 10px), -webkit-linear-gradient(white 30px, #ccc 30px, #ccc 31px, white 31px);
+    background-image: -moz-linear-gradient(left, white 10px, transparent 10px), -moz-linear-gradient(right, white 10px, transparent 10px), -moz-linear-gradient(white 30px, #ccc 30px, #ccc 31px, white 31px);
+    background-image: -ms-linear-gradient(left, white 10px, transparent 10px), -ms-linear-gradient(right, white 10px, transparent 10px), -ms-linear-gradient(white 30px, #ccc 30px, #ccc 31px, white 31px);
+    background-image: -o-linear-gradient(left, white 10px, transparent 10px), -o-linear-gradient(right, white 10px, transparent 10px), -o-linear-gradient(white 30px, #ccc 30px, #ccc 31px, white 31px);
+    background-image: linear-gradient(left, white 10px, transparent 10px), linear-gradient(right, white 10px, transparent 10px), linear-gradient(white 30px, #ccc 30px, #ccc 31px, white 31px);
+    background-size: 100% 100%, 100% 100%, 100% 31px;
+    border: none !important;
+    outline: none !important;
+    border-radius: 8px;
+    box-shadow: none;
+    line-height: 31px !important;
+    font-family: Arial, Helvetica, Sans-serif;
+    padding: 8px;
+    height: 200px;
+    font-family: 'Krub', sans-serif;
+    font-weight: 900;
+}
+
+textarea:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.fa-star {
+  color: #000000;
+}
+
+
+/* TEXTAREA */ 
+
+#ajout-commentaire {
+  width: 50% !important;
+}
+
+
+.review-textarea {
+  z-index: 5000;
+  box-shadow: 2px 2px 5px black;
+  background-color: #ffffff;
+  bottom: 0;
+  left: 25%;
+  right: 25%;
+  width: 50% !important;
+  display: none;
+  
+}
+
+.review-textarea::before, .review-textarea::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: -2px;
+  top: -5px;
+  z-index: -1;
+  transform: rotate(-2deg);
+  animation: textarea 1s ease forwards;
+}
+.review-textarea::after {
+  left: 0;
+  animation: textarea2 1s ease forwards;
+}
+.review-textarea, .review-textarea::before, .review-textarea::after {
+  background: #fff;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
+}
+
+@keyframes textarea {
+  from {
+    transform: rotate(-0deg);
+  } to {
+    transform: rotate(-2deg);
+  }
+}
+
+@keyframes textarea2 {
+  from {
+    transform: rotate(-0deg);
+  } to {
+    transform: rotate(-1deg);
+  }
+}
+
+
+@media screen and (max-width : 1508px) {
+    .review-textarea {
+      width: 75% !important;
+      left : 0 !important;
+      right : 0 !important;
+      
+    }
+    #ajout-commentaire {
+      width: 100% !important;
+    }
+}
+
+
+@media screen and (max-width : 560px) {
+  .review-textarea {
+    width: 100% !important;
+    left : 0 !important;
+    right : 0 !important;
+    
+  }
+  #ajout-commentaire {
+    width: 100% !important;
+  }
+
+}
+
+
+@media screen and (max-width : 477px) {
+  .epee, .reply-button {
+    font-size: 0.55rem;
+  }
+}
+
+@media screen and (max-width : 374px) {
+  .btn-fix {
+    font-size: 0.7rem !important;
+    padding: 5px;
+  }
+
+  .review-container {
+    padding: 0 !important;
+  }
+}
+
+@media screen and (max-width : 302px) {
+  .btn-fix {
+    font-size: 0.5rem !important;
+    padding: 5px;
+  }
+
+}
+
+
+@media screen and (max-width : 289px) {
+  .epee, .reply-button {
+    font-size: 0.50rem;
+  }
+}

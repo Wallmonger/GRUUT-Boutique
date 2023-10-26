@@ -1,0 +1,134 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Nos produits - Gruut
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{asset('assets/css/product/productmain.css')}}">
+{% endblock %}
+
+{% block content %}
+    <h1 class="text-center mt-5 p-3 top-title">tous nos articles</h1>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-0 col-md-2"></div>
+			<div class="col-12 col-md-8"><div class="accordion" id="accordionExample">
+	    <div class="accordion-item">
+	    <h2 class="accordion-header" id="headingOne">
+		    <button class="accordion-button bg-white rounded-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+		    Filtres
+		    </button>
+	    </h2>
+	  <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+		<div class="accordion-body">
+		  <!-- FILTER MENU START -->
+
+		  
+		    <div class="container-fluid filter-container row m-0 p-0 mb-5">
+	  
+			    <div class="col-0 col-sm-1"></div>
+	  			
+	  			{{form_start(form)}}
+
+				<div class="materials-container container col-12 col-sm-3">
+				    <p class=" pt-3 text-center filter-menu-title">COULEURS</p>
+				       
+							{{form_row(form.color)}}
+				        
+			    </div>
+
+				<div class="style-container container col-12 col-sm-3 mb-5">
+				    <p class="pt-3 text-center filter-menu-title">STYLE</p>
+				        <div class="d-flex justify-content-center"> {{form_row(form.style)}}</div>
+					       
+				        
+			    </div>
+
+				<div class="price-container container col-12 col-sm-3">
+				  <p class="text-center pt-3 filter-menu-title">PRIX</p>
+				  <div class="d-flex justify-content-center flex-column">
+				  {{form_row(form.price)}}
+					  <output class="output-price text-center" id="output"></output>
+				  </div>
+			  </div>
+
+
+
+		  		
+			    <div class="col-0 col-sm-1 mt-5"></div>
+			        {{form_row(form.submit)}}
+		        </div>
+		    {{form_end(form)}}
+
+
+		   
+	  <!-- FILTER MENU END -->
+		</div>
+	  </div>
+	</div>
+	</div>
+</div>
+			<div class="col-0 col-md-2"></div>
+		</div>
+	</div>
+    
+<!-- PRODUCTS START -->
+<div class="container-fluid product-container row mx-0 p-0 mb-5 mt-5">
+	<div class="col-0 col-sm-0 col-md-1 col-xl-1"></div> 
+	<div class="col-12 col-sm-12 col-md-10 col-xl-10 row m-0">
+			<!-- FOR PRODUCT IN PRODUCTS START -->
+			
+			{% for product in products %}
+
+			{% set note = 0 %}
+			{% set diviseur = 0 %}
+						{% for rating in product.comments %}
+							{% if rating.parent == null %}
+								{% set note = note + rating.rating %}
+								{% set diviseur = diviseur + 1 %}
+							{% endif %}
+						{% endfor %}			
+			
+			<div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+				<div class="card rounded-0">
+					<a href="{{path('app_product_slug', {'slug': product.slug} )}}" alt="{{product.name}}"><img class="card-img-top" src="assets/img/uploads/{{product.illustration}}" alt="Card image cap"></a>
+					<div class="card-body">
+						<h3 class="card-title text-center">{{product.name}}</h3>
+						<div class="w-100 d-flex justify-content-center">
+						{% if note == 0 or diviseur == 0 %}
+							{% set realnote = 0 %}
+						{% else %}
+							{% set realnote = note / diviseur %}
+						{% endif %}
+
+								{% if realnote|round == 0 %} Aucune d'évaluation
+								{% elseif realnote|round == 1 %} <i class="fa-sharp fa-solid fa-star productstar"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i>
+								{% elseif realnote|round == 2 %}	<i class="fa-sharp fa-solid fa-star productstar"></i><i class="fa-sharp fa-solid fa-star productstar"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i>
+								{% elseif realnote|round == 3 %}	<i class="fa-sharp fa-solid fa-star productstar"></i><i class="fa-sharp fa-solid fa-star productstar"></i><i class="fa-sharp fa-solid fa-star productstar"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i>
+								{% elseif realnote|round == 4 %}	<i class="fa-sharp fa-solid fa-star productstar"></i><i class="fa-sharp fa-solid fa-star productstar"></i><i class="fa-sharp fa-solid fa-star productstar"></i><i class="fa-sharp fa-solid fa-star productstar"></i><i class="fa-sharp fa-solid fa-star"></i>	
+								{% elseif realnote|round == 5 %}	<i class="fa-sharp fa-solid fa-star productstar"></i><i class="fa-sharp fa-solid fa-star productstar"></i><i class="fa-sharp fa-solid fa-star productstar"></i><i class="fa-sharp fa-solid fa-star productstar"></i><i class="fa-sharp fa-solid fa-star productstar"></i>	
+						
+								{% endif %}
+						</div> <hr>
+						<p class="card-text text-center"><em>{{ (product.price / 100)|number_format(2, ',', '.') }}€</em></p>
+						
+						<a href="{{path('app_addo_to_cart', {'id' : product.id})}}" class="btn over-panier w-100"><img class="avatar-img" src="{{asset('assets/img/temporary/panier.png')}}" alt="avatar" height="25px"></a>
+											
+					</div>
+				</div>
+            </div>
+			
+
+			{% endfor %}
+			
+	</div>
+	<div class="col-12 col-sm-12 col-md-1 col-xl-1"></div>
+</div>
+<!-- PRODUCT END -->
+
+{% endblock %}
+
+{% block js %}
+	<script src="{{asset('assets/js/product/product.js')}}" defer></script>
+{% endblock %}

@@ -1,0 +1,255 @@
+a {
+    
+  }
+  
+  /* CONTAINERS */
+  
+  .user-informations {
+    background-color: #372C2E;
+    border: 10px solid white;
+    transition: 0.2s;
+  }
+  
+  .user-informations:hover {
+    border: 5px solid rgba(0, 0, 0, 0.500);
+  }
+  
+  .user-commandes {
+    background: rgb(222,158,72);
+    border: 10px solid white;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+  
+  
+  
+  .user-commandes:hover {
+    border: 5px solid rgba(0, 0, 0, 0.211);
+    
+   
+  }
+  
+  .user-commandes-min {
+    background: rgb(222,158,72);
+    border: 10px solid white;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+  
+  .user-commandes-min:hover {
+    border: 5px solid rgba(0, 0, 0, 0.250);
+  }
+  
+  .user-adresses {
+    background-color: #372C2E;
+    transition: 0.5s;
+    border: 10px solid white;
+    transition: 0.2s;
+  }
+  
+  .user-adresses:hover {
+    border: 5px solid rgba(0, 0, 0, 0.250);
+  }
+  
+  .user-panier {
+    background: #563727;
+    border: 10px solid white;
+    transition: 0.2s;
+  }
+  
+  .user-panier:hover {
+    border: 5px solid rgba(0, 0, 0, 0.250);
+  }
+  
+  .user-contact {
+    background: #563727;
+    border: 10px solid white;
+    transition: 0.2s;
+  }
+  
+  .user-contact:hover {
+    border: 5px solid rgba(0, 0, 0, 0.250);
+  }
+  
+  .hidden-menu {
+    z-index: 50 !important;
+    visibility: hidden;
+  }
+  
+  /* APPARITION DES CHOIX  */
+  .box-anim {
+    animation: boxanim 0.3s ease forwards;
+  }
+  
+  @keyframes boxanim {
+      from {
+        scale: 0;
+      }
+      to {
+        scale: 1;
+      }
+  }
+  
+  /* FONT */
+  
+  .user-informations, .user-commandes, .user-adresses, .user-panier, .user-contact, .user-commandes-min {
+    text-decoration: none;
+  }
+  
+  .user-informations:hover, .user-commandes:hover, .user-adresses:hover, .user-panier:hover, .user-contact:hover, .user-commandes-min:hover {
+    filter: none;
+  }
+  
+  @import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,400;1,900&display=swap');
+  
+  .text-font {
+    font-family: 'Kanit', sans-serif;
+    font-size: 2.5rem; 
+    line-height: 40px; 
+    font-weight: 900;
+    color: #ffffff;
+    border-radius: 5px 5px 0px 0;
+    padding: 10px;
+    margin-bottom: 0px;
+  }
+  
+ 
+  
+  
+  
+  /* 576 PX FONT */
+  
+  @media screen and (width <= 576px) {
+    .user-informations, .user-commandes, .user-adresses, .user-panier, .user-contact, .user-commandes-min {
+      border: 2px solid white;
+    }
+  
+    .text-font {
+    font-size: 1.1rem !important;
+    line-height: 20px;
+    }
+    
+  }
+  
+  /* 768 PX FONT */
+  
+  @media screen and (576px > width < 768px) {
+    
+    .text-font {
+      font-size: 1.5rem !important;
+    }
+    
+  }
+  /* 992px FONT */
+  
+  @media screen and (768px < width < 992px) {
+    
+    .text-font {
+      font-size: 1.2rem !important;
+    }
+    
+  }
+  
+  /* 1600px FONT */
+  
+  @media screen and (992px < width < 1600px) {
+    
+    .text-font {
+      font-size: 1.9rem !important;
+    }
+    
+  }
+  
+  
+  
+  
+  
+  
+  
+  @media screen and (min-width : 768px) {
+    .user-informations, .user-commandes, .user-adresses, .user-panier {
+      height: 35%;
+    }
+  
+    .user-contact {
+      height: 25%;
+    }
+   
+  }
+  
+  
+  
+  
+  @media screen and (min-width : 992px) {
+      .user-informations, .user-commandes, .user-adresses {
+        height: 80%;
+      }
+  
+      .user-panier, .user-contact {
+        height: 20%;
+      }
+  }
+  
+  
+  /* BUTTONS ANIM  */
+  
+  .commande-item-container {
+    background: rgba(222, 157, 72, 0);
+  }
+  
+  .btn-anim {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    transition: 0.3s;
+    scale: 0.1;
+    text-align: center;
+    display: inline-block;
+    padding: 15px 40px;
+    border: 3px solid #ffffff46;
+    cursor: pointer;
+    letter-spacing: 1px;
+    position:relative;
+    overflow:hidden;
+    background-color: #372C2E;
+   
+  }
+  
+  .btn-anim:before {
+    content: "";
+    position: absolute;
+    height: 800px;
+    width: 50px;
+    background : #fff;
+    left: -550px;
+    top: -150px;
+    transform: rotate(37deg);
+    transition: all .3s;
+    opacity: 0.3;
+  }
+  
+  .btn-anim:hover {
+    background-color: rgba(255, 161, 19, 1);
+    color: black;
+  }
+  
+  .btn-anim:hover:before {
+    left:120%;
+  }
+  
+  @media screen and (max-width : 1610px ) {
+    .btn-anim h2 {
+      font-size: 1.5rem ;
+    }
+  }
+  
+  @media screen and (max-width : 992px ) {
+    .btn-anim h2 {
+      font-size: 1.2rem !important;
+    }
+  }
+  
+  @media screen and (max-width : 500px) {
+    .btn-anim h2 {
+      font-size: 1.1rem !important;
+    }
+  }

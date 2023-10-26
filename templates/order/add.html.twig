@@ -1,0 +1,161 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gruut - Paiement de ma commande{% endblock %}
+{% block css %}  <link rel="stylesheet" href="{{asset('assets/css/order/orderfinalize.css')}}"> {% endblock %}
+{% block js %}
+    <script src="https://js.stripe.com/v3/"></script>
+    <script type="text/javascript" defer>
+
+        var stripe = Stripe("pk_test_51MWxETESg3tRriAXnQlbCWfv3Y0XdLLbO2nHcJyRd7dmLtrjMK6pLbDll5CVevKautbTColeRMVQMOoYTeZ2zu0000cnsF3V6a");
+        var checkoutButton = document.getElementById("checkout-button");
+    
+
+    checkoutButton.addEventListener("click", function() {
+        fetch("/commande/create-session/{{ reference }}", {
+            method: "POST",
+        })
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (session) {
+                if (session.error == 'order') {
+                    window.location.replace('{{ path('app_order') }}');
+                } else {
+                    return stripe.redirectToCheckout({ sessionId: session.id});
+                }
+            })
+            .then(function (result) {
+                if (result.error) {
+                    alert(result.error.message);
+                }
+            })
+            .catch(function (error) {
+                console.error("Error", error);
+            });
+    });
+    </script>
+    
+{% endblock %}
+
+{% block content %}
+    <h2 class="text-center">Mon récapitulatif</h2>
+    <p class="text-center">Vérifier vos informations avant de payer votre commande</p>
+    <hr>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-0 col-lg-1"></div>
+            <div class="col-12 col-lg-3 input-user">
+
+                 <h5 class="text-center">Mon adresse de livraison</h5><br>
+                <div class="form-check mt-3">
+                    {{ delivery|raw }}
+                    <hr>
+                </div>
+
+                <h5 class="mt-5 text-center">Mon transporteur</h5> <br>
+                <div class="form-check">
+                    {{ carrier.name }}<br/>
+                    {{ carrier.description }}<br/>
+                    {{ (carrier.price / 100)|number_format(2, ',', ',') }} €<br/>
+                    <hr>
+                </div>
+
+            </div>
+            
+            <div class="col-12 col-lg-7">
+                <div class="text-center">
+                    <h5>Ma commande</h5> <br>
+                </div>
+                    <div class="row">
+                    {% set total = null %}
+                    {% for key, product in cart %}
+                        <div class="row d-none d-lg-flex">
+                            <div class="col-2 my-auto">
+                                <img src="/assets/img/uploads/{{ product.product.illustration}}" alt="{{product.product.name}}" height="75px">
+                            </div>
+
+                            <div class="col-8 my-auto">
+                                {{ product.product.name}}<br/>
+                                <small> {{ product.product.subtitle}}
+                                <br/>
+                                x {{ product.quantity }}
+                                </small>
+                            </div>
+                            <div class="col-2 my-auto">
+                                {{ ((product.product.price * product.quantity)/ 100)|number_format(2, ',', ',') }} €
+                            </div>
+                        </div>
+
+
+
+                            <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4 d-lg-none">
+				                <div class="card rounded-0">
+				        	        <a href="#" alt="{{product.product.name}}"><img class="card-img-top" src="/assets/img/uploads/{{ product.product.illustration}}" alt="{{product.product.name}}"></a>
+				        	            <div class="card-body">
+				        		            <h3 class="card-title text-center">{{ product.product.name}}</h3> <hr>
+				        		            <p class="card-text text-center">{{ product.product.subtitle}} <br> x {{ product.quantity }}</p> <br>
+                                            <p class="card-text text-center">{{ ((product.product.price * product.quantity)/ 100)|number_format(2, ',', ',') }} €</p>
+				        	            </div>
+				                </div>
+                            </div>
+
+
+
+                            {% set total = total + (product.product.price * product.quantity) %}
+                        
+                    {% endfor %}
+                    </div>
+            </div>
+            <div class="col-0 col-lg-1">
+                
+            </div>
+            <div class="col-12 text-center prices-container">
+            <hr>
+                    <strong>Sous-total :</strong>{{ (total / 100)|number_format(2,',','.') }} € <br/>
+            <strong>Livraison :</strong>{{ (carrier.price / 100)|number_format(2,',','.') }} € <br>
+            
+            <strong>Total :</strong>{{ ((total / 100) + (carrier.price / 100))|number_format(2,',','.') }} € <br>
+
+            <a class="btn btn-success btn-block mt-3" id="checkout-button">Payer |&nbsp;{{ ((total / 100) + (carrier.price / 100))|number_format(2,',','.') }} €</a>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+{% endblock %}

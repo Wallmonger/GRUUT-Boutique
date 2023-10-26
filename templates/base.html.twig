@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}{% endblock %}</title>
+  <link rel="icon" type="image/x-icon" href="{{ asset('assets/img/logo-c.png') }}">
+
+	
+  
+	<!--BOOTSTRAP-->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+		crossorigin="anonymous" defer></script>
+	<!-- FONT AWESOME	 -->
+	
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+	<!-- CSS -->
+    <!-- Block CSS de la page appeler -->
+      {% block css %}{% endblock %}
+    <!-- CSS template -->
+      <link rel="stylesheet" href="{{ asset('assets/css/gruut.css')}}">
+	<!-- JS -->
+	<script src="{{asset('assets/js/accueil/app.js')}}" defer></script>
+	  
+
+
+	{#  SCRIPT TARTE AU CITRON #}
+
+	<script type="text/javascript" src="https://tarteaucitron.io/load.js"></script>
+        <script src="/tarteaucitron/tarteaucitron.js"></script>
+        <script>
+            tarteaucitron.init({
+				"privacyUrl": "", /* Privacy policy url */
+				"hashtag": "#tarteaucitron", /* Open the panel with this hashtag */
+				"cookieName": "tarteaucitron", /* Cookie name */
+				"orientation": "middle", /* Banner position (top - bottom - middle - popup) */
+				"groupServices": false, /* Group services by category */
+				"showAlertSmall": false, /* Show the small banner on bottom right */
+				"cookieslist": false, /* Show the cookie list */
+				"showIcon": false,
+				/* Show cookie icon to manage cookies */
+				// "iconSrc": "", /* Optionnal: URL or base64 encoded image */
+				"iconPosition": "BottomRight", /* Position of the icon between BottomRight, BottomLeft, TopRight and TopLeft */
+				"adblocker": false, /* Show a Warning if an adblocker is detected */
+				"DenyAllCta": false, /* Show the deny all button */
+				"AcceptAllCta": true, /* Show the accept all button when highPrivacy on */
+				"highPrivacy": true, /* HIGHLY RECOMMANDED Disable auto consent */
+				"handleBrowserDNTRequest": false, /* If Do Not Track == 1, disallow all */
+				"removeCredit": true, /* Remove credit link */
+				"moreInfoLink": true, /* Show more info link */
+				"useExternalCss": false,
+				/* If false, the tarteaucitron.css file will be loaded */
+				// "cookieDomain": ".my-multisite-domaine.fr", /* Shared cookie for subdomain website */
+				"readmoreLink": "", /* Change the default readmore link pointing to tarteaucitron.io */
+				"mandatory": true /* Show a message about mandatory cookies */
+				});
+				
+				(tarteaucitron.job = tarteaucitron.job || []).push('facebook');
+				(tarteaucitron.job = tarteaucitron.job || []).push('facebookpost');
+				(tarteaucitron.job = tarteaucitron.job || []).push('twitter');
+				(tarteaucitron.job = tarteaucitron.job || []).push('googlemapssearch');
+        </script>
+
+	{# END SCRIPT TARTE AU CITRON #}
+
+
+
+</head>
+
+<body class="fade-in">
+
+	<!-- Responsive NAV Start -->
+	<input type="checkbox" id="active" class="d-lg-none checkbars">
+	<label for="active" class="menu-btn d-lg-none"><i class="fa-sharp fa-solid fa-bars"></i></label>   <!--d-xl-none in it-->
+	<div class="wrapper d-lg-none">
+	   <ul class="liste-responsive">
+	   	  <li><a href="{{path('app_product')}}" style="line-height: 25px">Tous nos articles</a></li> <hr>
+		  <li><a href="{{path('app_product_salon')}}">Salon</a></li> <hr>
+		  <li><a href="{{path('app_product_dining')}}" style="line-height: 25px">Salle à manger</a></li> <hr>
+		  <li><a href="{{path('app_product_chambres')}}">Chambre</a></li> <hr>
+		  <li><a href="{{path('app_product_cuisine')}}">Cuisine</a></li> <hr>
+		  <li><a href="{{path('app_apropos')}}">A propos</a></li> <hr>
+		  <li><a href="{{path('app_product')}}">Déconnexion</a></li>
+	   </ul>
+	</div>
+	<!-- Responsive Nav End -->
+
+
+	<!-- Header START -->
+	<div class="container-fluid d-flex justify-content-center">
+		<a href="{{path('app_home')}}" class="text-decoration-none">
+			<h2 class="text-center grutt-title mt-2">GRUUT</h2>
+		</a>
+	</div>
+
+
+	<header class="navbar-dark navbar-sticky header-static">
+		<!-- Logo Nav START -->
+		<nav class="navbar navbar-expand p-0 mb-2">
+			<div class="container-fluid px-3 px-xl-5">
+				<!-- Logo START -->
+
+				<!-- Logo END -->
+
+
+				<!-- Main navbar START -->
+				<div class="navbar-collapse w-100 collapse" id="navbarCollapse">
+
+					<!-- Nav category menu START -->
+					<ul class="navbar-nav navbar-nav-scroll me-auto" style="visibility:hidden">
+						<!-- Nav item 1 Demos -->
+
+					</ul>
+					<!-- Nav category menu END -->
+
+					<!-- Nav Main menu START -->
+					<ul class="navbar-nav navbar-nav-scroll me-auto d-none d-md-none d-lg-inline-flex d-xl-inline-flex">
+
+					
+						<!-- Nav item 4 Megamenu-->
+						<li class="nav-item dropdown dropdown-fullwidth">
+							<a class="linkFadeZero nav-link navigation category-underline-hover" href="{{path('app_product')}}" aria-haspopup="true"
+								aria-expanded="false">Tous nos articles</a>
+						</li>
+
+						<!-- Nav item 1 Demos -->
+						<li class="nav-item">
+							<a class="linkFadeOne nav-link navigation category-underline-hover" href="{{path('app_product_salon')}}">Salon</a>
+						</li>
+
+						<!-- Nav item 2 Pages -->
+						<li class="nav-item">
+							<a class="linkFadeTwo nav-link navigation category-underline-hover" href="{{path('app_product_dining')}}">Salle à manger</a>
+						</li>
+
+						<!-- Nav item 3 Account -->
+						<li class="nav-item">
+							<a class="linkFadeThree nav-link navigation category-underline-hover" href="{{path('app_product_chambres')}}">Chambres</a>
+						</li>
+
+						<!-- Nav item 4 Megamenu-->
+						<li class="nav-item dropdown dropdown-fullwidth">
+							<a class="linkFadeFour nav-link navigation category-underline-hover" href="{{path('app_product_cuisine')}}" aria-haspopup="true"
+								aria-expanded="false">Cuisine</a>
+						</li>
+
+
+						<!-- Nav item 1 Demos -->
+
+						<li class="nav-item dropdown">
+							<a class="linkFadeFive nav-link navigation category-underline-hover" href="{{path('app_apropos')}}" id="demoMenu"
+								aria-haspopup="true" aria-expanded="false">A propos</a>
+						</li>
+
+					</ul>
+					<ul class="navbar-nav navbar-nav-scroll me-auto d-inline-flex d-lg-none">
+						<a href="{{path('app_home')}}" class="grutt-subtitle-a"><li class="nav-item grutt-subtitle">Le site menuiserie</li></a>
+					</ul>
+
+
+
+						<!-- Nav Main menu END -->
+
+
+				</div>
+					<!-- Main navbar END -->
+
+				
+							<div class="icons-visibility">
+								<div class="panier-and-user position-absolute top-0 end-0 d-flex justify-content-around">
+									
+									<!-- Administration START (Admin) -->
+									{% if is_granted('ROLE_ADMIN') %}
+									<div class="dropdown ms-1 ms-lg-0 mx-3 d-none d-sm-block">
+										<a class="avatar avatar-sm p-0" href="/admin" id="profileDropdown" role="button">
+											<img class="avatar-img" src="{{asset('assets/img/temporary/admin.png')}}" alt="avatar" height="25px">
+										</a>
+									</div>
+									{% endif %}
+									<!-- Administration END (Admin) -->
+
+									<!-- Panier NEW START -->
+									
+									<div class="dropdown ms-1 ms-lg-0">
+										<a class="avatar avatar-sm p-0" href="#" id="profileDropdown" role="button" data-bs-auto-close="outside" data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
+											<img class="avatar-img" src="{{asset('assets/img/temporary/panier.png')}}" alt="avatar" height="25px">
+											
+											<!-- mon panier numbers -->
+											{% if cart|length > 0 %}
+											<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill" style="background : #DE9E48">
+												{{cart|length}}
+												<span class="visually-hidden">unread messages</span>
+											</span>
+											{% endif %}
+											<!-- mon panier numbers end -->
+
+										</a>
+										<ul class="dropdown-menu dropdown-animation panierul dropdown-menu-end shadow pt-3 profil-slideIn"
+											aria-labelledby="profileDropdown">
+											<!-- Profile info -->
+											<li class="px-3 mb-3">
+												<div class="d-flex align-items-center">
+													<!-- Avatar -->
+													<div class="avatar me-3">
+														<img class="avatar-img shadow" src="{{asset('assets/img/temporary/panier.png')}}" alt="avatar" height="50px">
+													</div>
+													<div>
+														<h3>Mon panier</h1>
+														<p class="small m-0 profil-info"></p>
+													</div>
+												</div>
+											</li>
+											<li>
+												<hr class="dropdown-divider">
+											</li>
+											<!-- Links -->
+											
+											{% if cart %}
+											<div class="row px-2 w-100 m-0 d-flex justify-content-center">
+												
+												{% for product in cart %}
+													
+														<div class="col-12 col-sm-6">
+															<img src="/assets/img/uploads/{{product.product.illustration}}" alt="" class="img-fluid">
+															<h6 class="card-title text-center">{{product.product.name}}</h6>								
+															<a href="{{path('app_delete_to_cart', {'id' : product.product.id})}}" class="btn btn-danger w-100 over-panier border-0"><img src="{{asset('assets/img/delete.png')}}" alt="" width="25px"></a>
+														</div>
+															
+												{% endfor %}
+												<a href="{{path('app_cart')}}" class="btn btn-success w-50 mt-2 w-100">Voir mon panier</a>
+											</div>
+												
+											{% else %}
+											<p class="text-center px-1">Vous n'avez aucun article dans votre panier</p>
+											{% endif %}
+															
+										</ul>
+									</div>		
+									<!-- Panier NEW END -->
+{% if app.user %}
+
+										<!-- Profile START (CONNECTED) -->
+									<div class="dropdown ms-1 ms-lg-0 px-4">
+										<a class="avatar avatar-sm p-0" href="#" id="profileDropdown" role="button"
+											data-bs-auto-close="outside" data-bs-display="static" data-bs-toggle="dropdown"
+											aria-expanded="false">
+											<img class="avatar-img rounded-circle" src="{{asset('assets/img/temporary/userconnected.png')}}" alt="avatar" height="25px">
+										</a>
+										<ul class="dropdown-menu dropdown-animation dropdown-menu-end shadow pt-3 profil-animate profil-slideIn"
+											aria-labelledby="profileDropdown">
+											<!-- Profile info -->
+											<li class="px-3 mb-3">
+												<div class="d-flex align-items-center">
+													<!-- Avatar -->
+													<div class="avatar me-3">
+														<img class="avatar-img rounded-circle shadow" src="{{asset('assets/img/temporary/userconnected.png')}}" alt="avatar" height="25px">
+													</div>
+													<div>
+														<a class="h6 profil-info" href="{{path('app_account')}}">{{ app.user.lastname }} {{ app.user.firstname }}</a>
+														<p class="small m-0 profil-info">{{ app.user.email }}</p>
+													</div>
+												</div>
+											</li>
+											<li>
+												<hr class="dropdown-divider">
+											</li>
+											<!-- Links -->
+											<li>
+												<a class="dropdown-item profil-info" href="{{path('app_account')}}"><i class="bi bi-person fa-fw me-2"></i>Mon compte</a>
+											</li>
+											{% if  is_granted("ROLE_ADMIN")  %}
+											<li>
+												<a class="dropdown-item profil-info" href="/admin"><i class="bi bi-gear fa-fw me-2"></i>Administration</a>
+											</li>
+											{% else %}
+											<li>
+												<a class="dropdown-item profil-info" href="{{path('app_account_order')}}"><i class="bi bi-gear fa-fw me-2"></i>Mes commandes</a>
+											</li>
+											{% endif %}
+											<li>
+												<a class="dropdown-item bg-danger-soft-hover profil-info" href="{{ path('app_logout')}}"><i class="fa-solid fa-right-to-bracket"></i> Se déconnecter</a>								
+											</li>										
+										</ul>
+									</div>		<!-- Profile END (CONNECTED) -->
+								</div>
+							</div>	
+		
+
+{% else %}
+									<!-- Profile START (VISITEUR) -->
+									<div class="dropdown ms-1 ms-lg-0 px-4">
+										<a class="avatar avatar-sm p-0" href="{{path('app_login')}}" id="profileDropdown" role="button">
+											<img class="avatar-img rounded-circle" src="{{asset('assets/img/temporary/user.png')}}" alt="avatar" height="25px">
+										</a>
+																				
+										
+									</div>
+								</div>
+							</div>	
+							<!-- Profile END (VISITEUR)-->
+{% endif %}
+									
+									
+			</div>
+		</nav>
+
+	</header>
+	<!-- Header END -->
+
+{% block content %} {% endblock %}
+
+	<!-- PRODUITS EN VRAC END -->
+  {# FOOTER START #}
+    <footer class="footer-custom mt-5">
+      <img class="img-fluid d-none d-md-block" src="{{ asset('assets/img/logo.PNG') }}">
+    <div class="container text-center">
+      <div class="row">
+        <div class="col-md-3">
+          <div>
+            <br><p class="or"><strong>Entreprise GRUUT</strong></p>
+            <small><p><span class="ors">Téléphone:</span> xx.xx.xx.xx.xx  <br> <span class="ors">Mail:</span> gruut@ent.fr <br></p></small>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div>
+            <br><br><a href="{{ asset('assets/pdf/cgu.pdf') }}" target="_blank" class="ors"><strong>Conditions d’utilisation</strong></a>
+          </div>
+        </div>
+        <div class="col-md-5">
+          <div>
+            <br><p><strong><span class="or">Horaires d'ouverture</span></strong></p>
+            <p>Ouvert du <span class="or1">Lundi au Vendredi</span> de 07h30 à 12h00 et de 13h30 à 17h00</p>
+          </div>
+        </div>
+      </div>
+    </div>
+</footer>
+  {# FOOTER END #}
+	{% block js %}{% endblock %}
+</body>
+
+</html>

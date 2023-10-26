@@ -1,0 +1,101 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Salle à manger - Gruut
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{asset('assets/css/product/productmain.css')}}">
+{% endblock %}
+
+{% block content %}
+    <h1 class="text-center mt-5 mb-5 top-title">salle à manger</h1>
+
+    <div class="container-fluid">
+		<div class="row">
+			<div class="col-0 col-md-2"></div>
+			<div class="col-12 col-md-8"><div class="accordion" id="accordionExample">
+	    <div class="accordion-item">
+	    <h2 class="accordion-header" id="headingOne">
+		    <button class="accordion-button bg-white rounded-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+		    Filtres
+		    </button>
+	    </h2>
+	  <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+		<div class="accordion-body">
+		  <!-- FILTER MENU START -->
+
+		  
+		    <div class="container-fluid filter-container row m-0 p-0 mb-5">
+	  
+			    <div class="col-0 col-sm-1"></div>
+	  			
+	  			{{form_start(form)}}
+
+				<div class="materials-container container col-12 col-sm-3">
+				    <p class=" pt-3 text-center filter-menu-title">COULEURS</p>
+				       
+							{{form_row(form.color)}}
+				        
+			    </div>
+
+				<div class="style-container container col-12 col-sm-3 mb-5">
+				    <p class="pt-3 text-center filter-menu-title">STYLE</p>
+				        <div class="d-flex justify-content-center"> {{form_row(form.style)}}</div>
+					       
+				        
+			    </div>
+
+				<div class="price-container container col-12 col-sm-3">
+				  <p class="text-center pt-3 filter-menu-title">PRIX</p>
+				  <div class="d-flex justify-content-center flex-column">
+				  {{form_row(form.price)}}
+					  <output class="output-price text-center" id="output"></output>
+				  </div>
+			  </div>
+
+
+
+		  		
+			    <div class="col-0 col-sm-1 mt-5"></div>
+			        {{form_row(form.submit)}}
+		        </div>
+		    {{form_end(form)}}
+
+
+		   
+	  <!-- FILTER MENU END -->
+		</div>
+	  </div>
+	</div>
+	</div>
+</div>
+			<div class="col-0 col-md-2"></div>
+		</div>
+	</div>
+<!-- PRODUCTS START -->
+<div class="container-fluid product-container row mx-0 p-0 mb-5 mt-5">
+	<div class="col-0 col-sm-0 col-md-1 col-xl-1"></div> 
+	<div class="col-12 col-sm-12 col-md-10 col-xl-10 row m-0">
+			<!-- FOR PRODUCT IN PRODUCTS START -->
+			
+			{% for product in products %}
+            
+            
+            {% if product.category == 'Salle à manger' %}
+                    
+              
+{% include 'product/single.html.twig' %}
+			  {% endif %}
+
+			{% endfor %}
+			
+	</div>
+	<div class="col-12 col-sm-12 col-md-1 col-xl-1"></div>
+</div>
+<!-- PRODUCT END -->
+{% endblock %}
+
+{% block js %}
+	<script src="{{asset('assets/js/product/product.js')}}" defer></script>
+{% endblock %}

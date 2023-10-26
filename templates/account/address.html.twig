@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gruut - Mes adresses{% endblock %}
+
+{% block content %}
+
+
+<h1 class="mt-5 text-center">Mes adresses</h1>
+<p class="text-center">Ajoutez une adresse pour effectuer vos commandes</p>
+<div class="container d-flex justify-content-center">
+ <a href="{{ path('app_account_address_add') }}" class="btn btn-info btn-lg">Ajouter une adresse</a>
+</div>
+
+<div class="container-fluid mt-5">
+    <div class="row w-100 m-0">
+        <div class="col-0 col-sm-1 col-md-2"></div>
+        
+        <div class="col-12 col-sm-10 col-md-8 row">
+
+            {% for address in app.user.addresses %}
+            <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-4">
+                <div class="card rounded-3">
+                <div class="card-body bg-dark text-white rounded-3">
+                <h5 class="card-title">{{ address.name }}</h5>
+                <p class="card-text">
+                    {{ address.address }}, <br>
+                    {{ address.postal }} - {{ address.city }} - {{ address.country}}
+                </p>
+                <a class="btn btn-sm" href="{{ path('app_account_address_edit', { 'id' : address.id }) }}" style="background : #DE9E48">Modifier</a> | <a class="btn btn-danger btn-sm" href="{{ path('app_account_address_delete', {'id' : address.id}) }}">Supprimer</a>
+            </div>
+        </div>
+                
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="col-0 col-sm-1 col-md-2"></div>
+    </div>
+</div>
+
+
+{% endblock %}

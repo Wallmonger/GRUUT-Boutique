@@ -1,0 +1,69 @@
+{% extends '@EasyAdmin/page/content.html.twig' %}
+
+
+{% block main %}
+
+    <!--BOOTSTRAP-->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+		crossorigin="anonymous" defer></script>
+
+    <!--ADMIN CSS -->
+    <link rel="stylesheet" href="{{asset('assets/css/utilisateur/admin.css')}}">
+    
+
+    <div class="position-relative w-100 h-100">
+        <h1 class="text-center mb-5">État des stocks</h1>
+        
+        <div class="row p-0">
+            <hr>
+            {% for material in materials %}
+            <div class="col-1"></div>
+                <div class="col-2 text-center">{{material.name}}</div>
+                <div class="col-2 text-end">{{material.quantity}}</div>
+
+                {% if material.quantity > 100 %}
+
+                    <div class="col-6 d-flex justify-content-center">
+                        <div class="container-grutt w-50 d-flex justify-content-start">
+                                <div class="bar bar4"></div>
+                        </div>
+                    </div>
+                {% elseif material.quantity < 100 and material.quantity > 50 %}
+
+                    <div class="col-6 d-flex justify-content-center">
+                        <div class="container-grutt w-50 d-flex justify-content-start">
+                                <div class="bar bar3"></div>                
+                        </div>
+                    </div>
+                {% elseif material.quantity < 50 and material.quantity > 25 %}
+                    
+                    <div class="col-6 d-flex justify-content-center">
+                        <div class="container-grutt w-50 d-flex justify-content-start">
+                                <div class="bar bar2"></div>
+                        </div>
+                    </div>
+                {% elseif material.quantity < 25 and material.quantity > 0 %}
+
+                    <div class="col-6 d-flex justify-content-center">
+                        <div class="container-grutt w-50 d-flex justify-content-start">
+                                <div class="bar bar1"></div>
+                        </div>
+                    </div>
+                {% else %}
+
+                    <div class="col-6 d-flex justify-content-center">
+                        <div class="container-grutt w-50 d-flex justify-content-center align-items-center">
+                           <div class="bar bar0 text-center">Épuisé</div>
+                        </div>
+                    </div>          
+                {% endif %}
+            <div class="col-1 mb-5"></div>   <hr> 
+            {% endfor %}
+            
+        </div>
+        
+    </div>
+{% endblock %}
